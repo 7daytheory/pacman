@@ -62,17 +62,20 @@ let draw = () => {
 let gameInterval = setInterval(gameLoop, 1000 / fps);
 
 let drawWalls = () => {
-    for(let i = 0; i < map.length; i++) {
-        for(let j = 0; j < map[0].length; j++) {
-            if(map[i][j] == 1) { // it's a wall
+    for (let i = 0; i < map.length; i++) {
+        for (let j = 0; j < map[0].length; j++) {
+            if (map[i][j] == 1) { // It's a wall
+                // Draw the main wall block
                 createRect(
-                    j * oneBlockSize, // x-coordinate of current wall block
-                    i * oneBlockSize, // y-coordinate, offset slightly from top
-                    oneBlockSize, // width, adjusted to extend for some overlap
-                    oneBlockSize, // height of inner section
-                    wallColor //color
+                    j * oneBlockSize,
+                    i * oneBlockSize,
+                    oneBlockSize,
+                    oneBlockSize,
+                    wallColor // Main wall color
                 );
-                if(j > 0 && map[i][j - 1] == 1) { // Inner wall block
+                
+                // Draw connecting walls to the left
+                if (j > 0 && map[i][j - 1] == 1) {
                     createRect(
                         j * oneBlockSize,
                         i * oneBlockSize + wallOffset,
@@ -81,7 +84,9 @@ let drawWalls = () => {
                         wallInnerColor
                     );
                 }
-                if(j < map[0].length - 1 && map[i][j + 1] == 1) { // Right side inner wall block
+
+                // Draw connecting walls to the right
+                if (j < map[0].length - 1 && map[i][j + 1] == 1) {
                     createRect(
                         j * oneBlockSize + wallOffset,
                         i * oneBlockSize + wallOffset,
@@ -90,7 +95,9 @@ let drawWalls = () => {
                         wallInnerColor
                     );
                 }
-                if(i > 0 && map[i - 1][j] == 1) { // Top wall blocks
+
+                // Draw connecting walls below
+                if (i < map.length - 1 && map[i + 1][j] == 1) {
                     createRect(
                         j * oneBlockSize + wallOffset,
                         i * oneBlockSize + wallOffset,
@@ -99,10 +106,12 @@ let drawWalls = () => {
                         wallInnerColor
                     );
                 }
-                if(i < map.length - 1 && map[i + 1][j] == 1) { // Bottom wall blocks
+
+                // Draw connecting walls above
+                if (i > 0 && map[i - 1][j] == 1) {
                     createRect(
                         j * oneBlockSize + wallOffset,
-                        i * oneBlockSize + wallOffset,
+                        i * oneBlockSize,
                         wallSpaceWidth,
                         wallSpaceWidth + wallOffset,
                         wallInnerColor
@@ -111,4 +120,4 @@ let drawWalls = () => {
             }
         }
     }
-}
+};
