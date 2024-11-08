@@ -12,6 +12,9 @@ let createRect = (x, y, width, height, color) => {
 let fps = 30;
 let oneBlockSize = 20;
 let wallColor = "#342DCA";
+let wallSpaceWidth = oneBlockSize / 1.3;
+let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
+let wallInnerColor = "black";
 
 //21 cols - 23 rows 
 //if 1 wall, if 0 not wall
@@ -51,6 +54,7 @@ let update = () => {
 }
 
 let draw = () => {
+    createRect(0,0, canvas.width, canvas.height, "black")
     //Add later
     drawWalls()
 }
@@ -67,7 +71,15 @@ let drawWalls = () => {
                     oneBlockSize, 
                     oneBlockSize, 
                     wallColor
-                )
+                );
+                if(j > 0 && map[i][j - 1] == 1) {
+                    createRect(j * oneBlockSize,
+                    i * oneBlockSize + wallOffset,
+                    wallSpaceWidth + wallOffset,
+                    wallSpaceWidth,
+                    wallInnerColor
+                    );
+                }
             }
         }
     }
