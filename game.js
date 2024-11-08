@@ -9,7 +9,7 @@ let createRect = (x, y, width, height, color) => {
 }
 
 //frames per second
-fps = 30;
+let fps = 30;
 let oneBlockSize = 20;
 let wallColor = "#342DCA";
 
@@ -41,7 +41,7 @@ let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
 
-let gameMap = () => {
+let gameLoop = () => {
     update()
     draw()
 }
@@ -59,8 +59,8 @@ let gameInterval = setInterval(gameLoop, 1000 / fps);
 
 let drawWalls = () => {
     for(let i = 0; i < map.length; i++) {
-        for(let j = 0; j < map[0].length; i++) {
-            if(map[i][j]) { //Then it's a wall
+        for(let j = 0; j < map[0].length; j++) {
+            if(map[i][j] == 1) { //Then it's a wall
                 createRect(
                     j * oneBlockSize, 
                     i * oneBlockSize, 
