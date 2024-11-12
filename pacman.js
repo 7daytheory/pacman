@@ -6,6 +6,13 @@ class Pacman {
         this.height = height;
         this.speed = speed;
         this.direction = DIRECTION_RIGHT;
+
+        this.currentFrame = 1;
+        this.frameCount = 7;
+
+        setInterval(() => {
+            this.changeAnimation();
+        }, 100)
     }
 
     moveProcess() {
@@ -66,11 +73,36 @@ class Pacman {
     }
 
     changeAnimation() {
-        
+        this.currentFrame = this.currentFrame == this.frameCount ? 1 : this.currentFrame + 1; //Set Animation for Pacman object
     }
 
     draw() {
+        canvasContext.save()
+        canvasContext.translate(
+            this.x + oneBlockSize / 2,
+            this.y + oneBlockSize / 2,
+        );
 
+        canvasContext.rotate((this.direction * 90 * Math.PI) / 180)
+
+        canvasContext.translate(
+            -this.x - oneBlockSize / 2,
+            -this.y - oneBlockSize / 2,
+        )
+
+        canvasContext.drawImage(
+            pacmanFrames,
+            (this.currentFrame - 1) / oneBlockSize,
+            0,
+            oneBlockSize,
+            oneBlockSize,
+            this.x,
+            this.y,
+            this.width,
+            this.height,
+        )
+
+        canvasContext.restore();
     }
 
     getMapX() {
@@ -81,7 +113,7 @@ class Pacman {
         return parseInt(this.y / oneBlockSize)
     }
 
-    getMapXRightSize() {
+    getMapXRightSide() {
         return parseInt((this.x + 0.9999 * oneBlockSize) / oneBlockSize)
     }
 
