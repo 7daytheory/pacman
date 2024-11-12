@@ -42,6 +42,11 @@ class Pacman {
     }
 
     checkCollision() {
+        let isCollided = false;
+
+        if() {
+
+        }
 
     }
 
@@ -59,5 +64,21 @@ class Pacman {
 
     draw() {
 
+    }
+
+    getMapX() {
+        return parseInt(this.x / oneBlockSize)
+    }
+
+    getMapY() {
+        return parseInt(this.y / oneBlockSize)
+    }
+
+    getMapXRightSize() {
+        return parseInt((this.x + 0.9999 * oneBlockSize) / oneBlockSize)
+    }
+
+    getMapYRightSide() {
+        return parseInt((this.y + 0.9999 * oneBlockSize) / oneBlockSize)
     }
 }
