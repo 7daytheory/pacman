@@ -28,22 +28,35 @@ class Pacman {
     }
 
     moveBackwards() {
-
+        switch(this.direction) {
+            case DIRECTION_RIGHT:
+                this.x -= this.speed; // Reverse current movement
+                break;
+            case DIRECTION_LEFT:
+                this.x += this.speed; // Reverse current movement
+                break;
+            case DIRECTION_UP:
+                this.y += this.speed; // Reverse current movement
+                break;
+            case DIRECTION_BOTTOM:
+                this.y -= this.speed; // Reverse current movement
+                break;
+        }
     }
 
     moveForwards() {
         switch(this.direction) {
             case DIRECTION_RIGHT:
-                this.x -= this.speed
+                this.x += this.speed; // Move right by increasing x
                 break;
             case DIRECTION_LEFT:
-                this.y += this.speed
+                this.x -= this.speed; // Move left by decreasing x
                 break;
             case DIRECTION_UP:
-                this.x += this.speed
+                this.y -= this.speed; // Move up by decreasing y
                 break;
             case DIRECTION_BOTTOM:
-                this.y -= this.speed
+                this.y += this.speed; // Move down by increasing y
                 break;
         }
     }
@@ -92,7 +105,7 @@ class Pacman {
 
         canvasContext.drawImage(
             pacmanFrames,
-            (this.currentFrame - 1) / oneBlockSize,
+            (this.currentFrame - 1) * oneBlockSize,
             0,
             oneBlockSize,
             oneBlockSize,
