@@ -5,6 +5,7 @@ class Pacman {
         this.width = width;
         this.height = height;
         this.speed = speed;
+        this.direction = DIRECTION_RIGHT;
     }
 
     moveProcess() {
@@ -24,10 +25,35 @@ class Pacman {
     }
 
     moveForwards() {
-
+        switch(this.direction) {
+            case DIRECTION_RIGHT:
+                this.x -= this.speed
+                break;
+            case DIRECTION_LEFT:
+                this.y += this.speed
+                break;
+            case DIRECTION_UP:
+                this.x += this.speed
+                break;
+            case DIRECTION_BOTTOM:
+                this.y -= this.speed
+                break;
+        }
     }
 
     checkCollision() {
+        let isCollided = false;
+
+        if(
+        map[this.getMapY()][this.getMapX()] == 1 
+        || map[this.getMapYRightSide()][this.getMapX()] == 1
+        || map[this.getMapY()][this.getMapXRightSide()] == 1
+        || map[this.getMapYRightSide()][this.getMapXRightSide()] == 1
+        ) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
@@ -45,5 +71,21 @@ class Pacman {
 
     draw() {
 
+    }
+
+    getMapX() {
+        return parseInt(this.x / oneBlockSize)
+    }
+
+    getMapY() {
+        return parseInt(this.y / oneBlockSize)
+    }
+
+    getMapXRightSize() {
+        return parseInt((this.x + 0.9999 * oneBlockSize) / oneBlockSize)
+    }
+
+    getMapYRightSide() {
+        return parseInt((this.y + 0.9999 * oneBlockSize) / oneBlockSize)
     }
 }
