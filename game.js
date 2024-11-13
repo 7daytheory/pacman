@@ -14,7 +14,7 @@ let oneBlockSize = 20;
 let wallColor = "#342DCA";
 let wallSpaceWidth = oneBlockSize / 1.5;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
-let wallInnerColor = "black";
+let wallInnerColor = "#222";
 
 //Pacman Direction vars
 const DIRECTION_RIGHT = 4;
@@ -143,3 +143,12 @@ let createNewPacman = () => {
 
 createNewPacman();
 gameLoop();
+
+//Setup Keycode for 
+window.addEventListener("keydown", (event) => {
+    let k = event.code;
+
+    setTimeout(() => {
+        //Go through Left a , right d, down s, up w
+    }, 1);
+})
