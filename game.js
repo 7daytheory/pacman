@@ -149,6 +149,18 @@ window.addEventListener("keydown", (event) => {
     let k = event.code;
 
     setTimeout(() => {
-        //Go through Left a , right d, down s, up w
+        if(k == 37 || k == 65) { // left key or a
+            //pacman left
+            
+        } else if (k == 40 || k == 83) { //down arrow or s
+            //pacman down
+
+        } else if (k == 39 || k == 68) { //right arrow or d
+            //pacman right
+
+        } else if (k == 87 || k == 38) { // up arrow or w
+            //pacman up
+
+        }
     }, 1);
 })
