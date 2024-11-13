@@ -15,6 +15,7 @@ let wallColor = "#342DCA";
 let wallSpaceWidth = oneBlockSize / 1.5;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "#222";
+let foodColor = "#FFF";
 
 //Pacman Direction vars
 const DIRECTION_RIGHT = 4;
@@ -59,10 +60,29 @@ let update = () => {
     pacman.moveProcess();
 }
 
+let drawFoods = () => {
+    // Loop through each row of the grid/map
+    for (let i = 0; i < map.length; i++) {
+        // Loop through each column in the current row
+        for(let j = 0; j < map[0].length; j++ ) {
+            // Check if the current cell in the map contains a food item (represented as 2)
+            if(map[i][j] == 2) {
+                // If there's food - call createReact draw a small rectangle
+                createRect(
+                    j * oneBlockSize + oneBlockSize / 3,  // Calculate x-coordinate for food, offset to center in cell
+                    i * oneBlockSize + oneBlockSize / 3,  // Calculate y-coordinate for food, offset to center in cell
+                    oneBlockSize / 3,                     // Width of the food rectangle
+                    oneBlockSize / 3,                     // Height of the food rectangle
+                    foodColor
+                );
+            }
+        }
+    }
+}
 let draw = () => {
     createRect(0,0, canvas.width, canvas.height, "black")
-    //Add later
     drawWalls();
+    drawFoods();
 
     pacman.draw();
 }
@@ -144,7 +164,7 @@ let createNewPacman = () => {
 createNewPacman();
 gameLoop();
 
-//Setup Keycode for 
+// //Setup Keycode for 
 window.addEventListener("keydown", (event) => {
     let k = event.keyCode;
 
