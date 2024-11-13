@@ -150,17 +150,13 @@ window.addEventListener("keydown", (event) => {
 
     setTimeout(() => {
         if(k == 37 || k == 65) { // left key or a
-            //pacman left
-            
+            pacman.nextDirection = DIRECTION_LEFT;
         } else if (k == 40 || k == 83) { //down arrow or s
-            //pacman down
-
+            pacman.nextDirection = DIRECTION_BOTTOM;
         } else if (k == 39 || k == 68) { //right arrow or d
-            //pacman right
-
+            pacman.nextDirection = DIRECTION_RIGHT;
         } else if (k == 87 || k == 38) { // up arrow or w
-            //pacman up
-
+            pacman.nextDirection = DIRECTION_UP;
         }
     }, 1);
 })
