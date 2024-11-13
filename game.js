@@ -164,19 +164,24 @@ let createNewPacman = () => {
 createNewPacman();
 gameLoop();
 
-// //Setup Keycode for 
+// Setup key codes to move pacman on keydown
 window.addEventListener("keydown", (event) => {
-    let k = event.keyCode;
-
-    setTimeout(() => {
-        if(k == 37 || k == 65) { // left key or a
+    switch (event.code) {
+        case "ArrowLeft":
+        case "KeyA":
             pacman.nextDirection = DIRECTION_LEFT;
-        } else if (k == 40 || k == 83) { //down arrow or s
+            break;
+        case "ArrowDown":
+        case "KeyS":
             pacman.nextDirection = DIRECTION_BOTTOM;
-        } else if (k == 39 || k == 68) { //right arrow or d
+            break;
+        case "ArrowRight":
+        case "KeyD":
             pacman.nextDirection = DIRECTION_RIGHT;
-        } else if (k == 87 || k == 38) { // up arrow or w
+            break;
+        case "ArrowUp":
+        case "KeyW":
             pacman.nextDirection = DIRECTION_UP;
-        }
-    }, 1);
-})
+            break;
+    }
+});
