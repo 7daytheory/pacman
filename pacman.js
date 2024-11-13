@@ -6,6 +6,7 @@ class Pacman {
         this.height = height;
         this.speed = speed;
         this.direction = DIRECTION_RIGHT;
+        //this.nextDirection = DIRECTION_RIGHT; Start direction going right ?
 
         this.currentFrame = 1;
         this.frameCount = 7;
@@ -82,7 +83,14 @@ class Pacman {
     }
 
     changeDirectionIfPossible() {
-        
+        if(this.direction == this.nextDirection) return; // If new direction and next direction are same do nothing
+
+        let tempDirection = this.direction;
+        this.direction = this.nextDirection;
+        this.moveForwards();
+        if(this.checkCollision()) {
+            this.moveBackwards();
+        }
     }
 
     changeAnimation() {

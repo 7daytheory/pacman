@@ -146,7 +146,7 @@ gameLoop();
 
 //Setup Keycode for 
 window.addEventListener("keydown", (event) => {
-    let k = event.code;
+    let k = event.keyCode;
 
     setTimeout(() => {
         if(k == 37 || k == 65) { // left key or a
