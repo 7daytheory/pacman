@@ -16,6 +16,7 @@ let wallSpaceWidth = oneBlockSize / 1.5;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "#222";
 let foodColor = "#FFF";
+let score = 0;
 
 //Pacman Direction vars
 const DIRECTION_RIGHT = 4;
@@ -58,6 +59,7 @@ let gameLoop = () => {
 
 let update = () => {
     pacman.moveProcess();
+    pacman.eat();
 }
 
 let drawFoods = () => {
