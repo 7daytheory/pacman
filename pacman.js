@@ -13,7 +13,7 @@ class Pacman {
         this.movementSound.loop = true; // Enable looping
 
         // Play the sound as soon as the game starts
-        this.movementSound.play();
+        //this.movementSound.play(); *** Temporary turn off while working on project
 
         this.currentFrame = 1;
         this.frameCount = 7;
