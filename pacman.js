@@ -6,17 +6,15 @@ class Pacman {
         this.height = height;
         this.speed = speed;
         this.direction = DIRECTION_RIGHT;
-        //this.nextDirection = DIRECTION_RIGHT; Start direction going right ?
+        this.nextDirection = this.direction
+        this.currentFrame = 1;
+        this.frameCount = 7;
 
         // Pacman sound setup
         this.movementSound = new Audio('assets/sounds/pacman-sound.mp3');
         this.movementSound.loop = true; // Enable looping
 
-        // Play the sound as soon as the game starts
         //this.movementSound.play(); *** Temporary turn off while working on project
-
-        this.currentFrame = 1;
-        this.frameCount = 7;
 
         setInterval(() => {
             this.changeAnimation();
