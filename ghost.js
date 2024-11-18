@@ -118,26 +118,15 @@ class Ghost {
         this.currentFrame = this.currentFrame == this.frameCount ? 1 : this.currentFrame + 1; //Set Animation for Pacman object
     }
 
+    //Unlike Pacman - no rotation or tralsnation is applied - just place them on canvas
     draw() {
         canvasContext.save()
-        canvasContext.translate(
-            this.x + oneBlockSize / 2,
-            this.y + oneBlockSize / 2,
-        );
-
-        canvasContext.rotate((this.direction * 90 * Math.PI) / 180)
-
-        canvasContext.translate(
-            -this.x - oneBlockSize / 2,
-            -this.y - oneBlockSize / 2,
-        )
-
         canvasContext.drawImage(
-            pacmanFrames,
-            (this.currentFrame - 1) * oneBlockSize,
-            0,
-            oneBlockSize,
-            oneBlockSize,
+            ghostFrames, //get images from spritesheet (ghost.png)
+            this.imageX,
+            this.imageY,
+            this.imageWidth,
+            this.imageWidth,
             this.x,
             this.y,
             this.width,
