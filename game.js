@@ -24,6 +24,14 @@ const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
 
+//Setup different ghosts based on sprite image
+let ghostLocations = [
+    {x:0 , y:0 },
+    {x:176 , y:0},
+    {x:0 , y:121 },
+    {x:176 , y: 121},
+]
+
 //21 cols - 23 rows 
 //if 1 wall, if 0 not wall
 let map = [
@@ -172,6 +180,24 @@ let createNewPacman = () => {
         oneBlockSize,
         oneBlockSize / 5,
     )
+}
+
+let createGhosts = () => {
+    ghosts = []
+    for(let i = 0; i < 1; i++) {
+        let newGhost = new Ghost(
+            9 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
+            10 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
+            oneBlockSize,
+            oneBlockSize,
+            pacman.speed / 2,
+            ghostLocations[i % 4].x,
+            ghostLocations[i % 4].y,
+            124,
+            116,
+            6 + i,
+        )
+    }
 }
 
 createNewPacman();
