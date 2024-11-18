@@ -1,26 +1,26 @@
-class Pacman {
-    constructor(x,y, width, height, speed) {
+class Ghost {
+    constructor(x,
+        y,
+        width,
+        height,
+        speed,
+        imageX,
+        imageY,
+        imageWidth,
+        imageHeight,
+        range
+    ) {
         this.x = x;
         this.y = y;
         this.width = width; 
         this.height = height;
         this.speed = speed;
         this.direction = DIRECTION_RIGHT;
-        //this.nextDirection = DIRECTION_RIGHT; Start direction going right ?
-
-        // Pacman sound setup
-        this.movementSound = new Audio('assets/sounds/pacman-sound.mp3');
-        this.movementSound.loop = true; // Enable looping
-
-        // Play the sound as soon as the game starts
-        //this.movementSound.play(); *** Temporary turn off while working on project
-
-        this.currentFrame = 1;
-        this.frameCount = 7;
-
-        setInterval(() => {
-            this.changeAnimation();
-        }, 100)
+        this.imageX = imageX;
+        this.imageY = imageY;
+        this.imageWidth = imageWidth;
+        this.imageHeight = imageHeight;
+        this.range = range
     }
 
     moveProcess() {
