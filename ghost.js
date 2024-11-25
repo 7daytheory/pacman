@@ -24,6 +24,11 @@ class Ghost {
     }
 
     moveProcess() {
+        if(this.isInRangeOfPacman()) {
+            target = pacman;
+        } else {
+            this.target = randomTargetForGhosts;
+        }
         this.changeDirectionIfPossible();
         this.moveForwards();
             if(this.checkCollision()) {
@@ -85,9 +90,28 @@ class Ghost {
 
     }
 
+    isInRangeOfPacman() {
+        let xDistance = Math.abs(pacman.getMapX() - this.getMapX());
+        let yDistance = Math.abs(pacman.getMapY() - this.getMapY());
+
+        if(Math.sqrt(xDistance * xDistance + yDistance * yDistance) <= this.range) {
+            return true;
+        }
+
+        return false;
+    }
+
     changeDirectionIfPossible() {
+        let tempDirection = this.direction;
+
+        this.direction = this.calculateNewDirection(
+            map,
+            parseInt(this.target.x / oneBlockSize),
+            parseInt(this.target.y / oneBlockSize),
+        )
+
         this.moveForwards();
-        
+
         if(this.checkCollision()) {
             this.moveBackwards();
             this.direction = tempDirection;
