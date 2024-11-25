@@ -17,6 +17,7 @@ let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "#222";
 let foodColor = "#FFF";
 let score = 0;
+let ghosts = [];
 
 //Pacman Direction vars
 const DIRECTION_RIGHT = 4;
@@ -24,7 +25,7 @@ const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
 
-//Setup different ghosts based on sprite image
+//Setup different ghosts based on sprite image x/y co-ords
 let ghostLocations = [
     {x:0 , y:0 },
     {x:176 , y:0},
@@ -98,6 +99,12 @@ let drawScore = () => {
         0,
         oneBlockSize * (map.length +1) + 10
     )
+}
+
+let drawGhosts = () => {
+    for(let i = 0; i < ghosts.length; i++) {
+        ghosts[i].draw();
+    }
 }
 
 let draw = () => {
@@ -201,6 +208,7 @@ let createGhosts = () => {
 }
 
 createNewPacman();
+createGhosts();
 gameLoop();
 
 // Setup key codes to move pacman on keydown
