@@ -31,24 +31,6 @@ class Ghost {
             }
     }
 
-    eat() {
-        for(let i = 0; i < map.length; i++) {
-            console.log(i);
-            for(let j = 0; j < map[0].length; j++) {
-            console.log(map[0]);
-            if(
-                map[i][j] == 2 &&
-                this.getMapX() == j &&
-                this.getMapY() == i
-            ) {
-                console.log(map[i][j]);
-                map[i][j] = 3;
-                score++;
-            }
-            }
-        }
-    }
-
     moveBackwards() {
         switch(this.direction) {
             case DIRECTION_RIGHT:
@@ -104,12 +86,12 @@ class Ghost {
     }
 
     changeDirectionIfPossible() {
-        if(this.direction == this.nextDirection) return; // If new direction and next direction are same do nothing
-
-        let tempDirection = this.direction;
-        this.direction = this.nextDirection;
         this.moveForwards();
+        
         if(this.checkCollision()) {
+            this.moveBackwards();
+            this.direction = tempDirection;
+        } else {
             this.moveBackwards();
         }
     }
