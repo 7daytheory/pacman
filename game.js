@@ -113,6 +113,7 @@ let draw = () => {
     drawFoods();
     pacman.draw();
     drawScore();
+    drawGhosts();
 }
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
@@ -203,7 +204,8 @@ let createGhosts = () => {
             124,
             116,
             6 + i,
-        )
+        );
+        ghosts.push(newGhost);
     }
 }
 
