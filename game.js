@@ -18,6 +18,7 @@ let wallInnerColor = "#222";
 let foodColor = "#FFF";
 let score = 0;
 let ghosts = [];
+let ghostCount = 4;
 
 //Pacman Direction vars
 const DIRECTION_RIGHT = 4;
@@ -192,7 +193,7 @@ let createNewPacman = () => {
 
 let createGhosts = () => {
     ghosts = []
-    for(let i = 0; i < 1; i++) {
+    for(let i = 0; i < ghostCount; i++) {
         let newGhost = new Ghost(
             9 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
             10 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
