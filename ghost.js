@@ -130,6 +130,34 @@ class Ghost {
         }
     }
 
+    calculateNewDirection() {
+        let mp = [];
+
+        for(let i = 0; i < map.length; i++) {
+            mp[i] = map[i].slice();
+        }
+
+        let queue = [{
+            x: this.getMapX(),
+            y: this.getMapY(),
+            moves: [],
+        }]
+
+        while(queue.length > 0) {
+            let poped = queue.shift();
+            if(poped.x == destX && poped.y == destY) {
+                return poped.moves[0];
+            } else {
+                mp[poped.y][poped.x] = 1;
+                let neighbourList = this.addNeighbours(poped, mp);
+            }
+        }
+    }
+
+    addNeighbours(poped, mp) {
+        //Calculate neighbour cells for ghost to move to
+    }
+
     changeAnimation() {
         this.currentFrame = this.currentFrame == this.frameCount ? 1 : this.currentFrame + 1; //Set Animation for Pacman object
     }
