@@ -20,14 +20,24 @@ class Ghost {
         this.imageY = imageY;
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
-        this.range = range
+        this.range = range;
+        this.randomTargetIndex = parseInt(Math.random() * randomTargetForGhosts.length);
+
+        setInterval(() => {
+            this.changeRandomDirection()
+        }, 1000)
+    }
+
+    changeRandomDirection() {
+        this.randomTargetIndex += 1;
+        this.randomTargetIndex = this.randomTargetIndex % 4;
     }
 
     moveProcess() {
         if(this.isInRangeOfPacman()) {
             target = pacman;
         } else {
-            this.target = randomTargetForGhosts;
+            this.target = randomTargetForGhosts[this.randomTargetIndex];
         }
         this.changeDirectionIfPossible();
         this.moveForwards();
