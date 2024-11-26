@@ -28,9 +28,9 @@ const DIRECTION_BOTTOM = 1;
 
 //Setup different ghosts based on sprite image x/y co-ords
 let ghostLocations = [
-    {x:0 , y:0 },
+    {x:0 , y:0},
     {x:176 , y:0},
-    {x:0 , y:121 },
+    {x:0 , y:121},
     {x:176 , y: 121},
 ]
 
@@ -61,6 +61,17 @@ let map = [
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
+
+//Random Ghost Targets
+let randomTargetForGhosts = [
+    {x: 1 * oneBlockSize, y: 1 * oneBlockSize},
+    {x: 1 * oneBlockSize, y: (map.length -2) * oneBlockSize},
+    {x: (map[0].length - 2) * oneBlockSize, y: 1 * oneBlockSize},
+    {
+        x: (map[0].length - 2) * oneBlockSize, 
+        y: (map.length -2) * oneBlockSize
+    },
+]
 
 let gameLoop = () => {
     update();

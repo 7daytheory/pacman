@@ -20,10 +20,25 @@ class Ghost {
         this.imageY = imageY;
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
-        this.range = range
+        this.range = range;
+        this.randomTargetIndex = parseInt(Math.random() * randomTargetForGhosts.length);
+
+        setInterval(() => {
+            this.changeRandomDirection()
+        }, 1000)
+    }
+
+    changeRandomDirection() {
+        this.randomTargetIndex += 1;
+        this.randomTargetIndex = this.randomTargetIndex % 4;
     }
 
     moveProcess() {
+        if(this.isInRangeOfPacman()) {
+            target = pacman;
+        } else {
+            this.target = randomTargetForGhosts[this.randomTargetIndex];
+        }
         this.changeDirectionIfPossible();
         this.moveForwards();
             if(this.checkCollision()) {
@@ -85,15 +100,62 @@ class Ghost {
 
     }
 
+    isInRangeOfPacman() {
+        let xDistance = Math.abs(pacman.getMapX() - this.getMapX());
+        let yDistance = Math.abs(pacman.getMapY() - this.getMapY());
+
+        if(Math.sqrt(xDistance * xDistance + yDistance * yDistance) <= this.range) {
+            return true;
+        }
+
+        return false;
+    }
+
     changeDirectionIfPossible() {
+        let tempDirection = this.direction;
+
+        this.direction = this.calculateNewDirection(
+            map,
+            parseInt(this.target.x / oneBlockSize),
+            parseInt(this.target.y / oneBlockSize),
+        )
+
         this.moveForwards();
-        
+
         if(this.checkCollision()) {
             this.moveBackwards();
             this.direction = tempDirection;
         } else {
             this.moveBackwards();
         }
+    }
+
+    calculateNewDirection() {
+        let mp = [];
+
+        for(let i = 0; i < map.length; i++) {
+            mp[i] = map[i].slice();
+        }
+
+        let queue = [{
+            x: this.getMapX(),
+            y: this.getMapY(),
+            moves: [],
+        }]
+
+        while(queue.length > 0) {
+            let poped = queue.shift();
+            if(poped.x == destX && poped.y == destY) {
+                return poped.moves[0];
+            } else {
+                mp[poped.y][poped.x] = 1;
+                let neighbourList = this.addNeighbours(poped, mp);
+            }
+        }
+    }
+
+    addNeighbours(poped, mp) {
+        //Calculate neighbour cells for ghost to move to
     }
 
     changeAnimation() {
