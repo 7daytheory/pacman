@@ -76,6 +76,9 @@ let randomTargetForGhosts = [
 let gameLoop = () => {
     update();
     draw();
+    for(let i = 0; i < ghosts.length; i++) {
+        ghosts[i].moveProcess();
+    }
 }
 
 let update = () => {
