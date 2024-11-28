@@ -178,7 +178,7 @@ class Ghost {
         ) {
             let tempMoves = poped.moves.slice()
             tempMoves.push(DIRECTION_LEFT)
-            queue.push({x: poped.x - 1, y: poped.x, moves: tempMoves})
+            queue.push({x: poped.x - 1, y: poped.y, moves: tempMoves})
         }
 
         if(
@@ -188,7 +188,7 @@ class Ghost {
         ) {
             let tempMoves = poped.moves.slice()
             tempMoves.push(DIRECTION_RIGHT)
-            queue.push({x: poped.x + 1, y: poped.x, moves: tempMoves})
+            queue.push({x: poped.x + 1, y: poped.y, moves: tempMoves})
         }
 
         if(
@@ -198,7 +198,7 @@ class Ghost {
         ) {
             let tempMoves = poped.moves.slice()
             tempMoves.push(DIRECTION_UP)
-            queue.push({x: poped.x, y: poped.x + 1, moves: tempMoves})
+            queue.push({x: poped.x, y: poped.y + 1, moves: tempMoves})
         }
 
         if(
@@ -208,7 +208,7 @@ class Ghost {
         ) {
             let tempMoves = poped.moves.slice()
             tempMoves.push(DIRECTION_BOTTOM)
-            queue.push({x: poped.x, y: poped.x - 1, moves: tempMoves})
+            queue.push({x: poped.x, y: poped.y - 1, moves: tempMoves})
         }
 
         return queue;
