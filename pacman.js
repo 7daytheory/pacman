@@ -11,8 +11,8 @@ class Pacman {
         this.frameCount = 7;
 
         // Pacman sound setup
-        this.movementSound = new Audio('assets/sounds/pacman-sound.mp3');
-        this.movementSound.loop = true; // Enable looping
+            // this.movementSound = new Audio('assets/sounds/pacman-sound.mp3');
+            // this.movementSound.loop = true; // Enable looping
 
         //this.movementSound.play(); *** Temporary turn off while working on project
 
