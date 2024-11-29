@@ -102,7 +102,7 @@ let restartGame = () => {
 }
 
 let gameOver = () => {
-    //Game Over
+    clearInterval(gameInterval);
 }
 
 let drawFoods = () => {
