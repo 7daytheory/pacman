@@ -87,8 +87,22 @@ let update = () => {
     }
 
     if(pacman.checkGhostCollision()) {
-        console.log("Pacman and a ghost collided!")
+        restartGame();
     }
+}
+
+let restartGame = () => {
+    console.log("Pacman and Ghost Hit - Restart Game!");
+    createNewPacman();
+    createGhosts();
+    lives--;
+    if(lives == 0) {
+        gameOver();
+    }
+}
+
+let gameOver = () => {
+    //Game Over
 }
 
 let drawFoods = () => {
