@@ -95,8 +95,8 @@ class Ghost {
         }
 
     }
-
-    checkGhostCollission() {
+    
+    checkGhostCollision() {
 
     }
 
