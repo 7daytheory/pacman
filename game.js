@@ -105,6 +105,12 @@ let gameOver = () => {
     clearInterval(gameInterval);
 }
 
+let drawLives = () => {
+    canvasContext.font = "20px Arial";
+    canvasContext.fillStyle = "YELLOW";
+    canvasContext.fillText("Lives: ", 260, oneBlockSize * (map.length + 1) + 10)
+}
+
 let drawFoods = () => {
     // Loop through each row of the grid/map
     for (let i = 0; i < map.length; i++) {
@@ -148,6 +154,7 @@ let draw = () => {
     pacman.draw();
     drawScore();
     drawGhosts();
+    drawLives();
 }
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
