@@ -81,6 +81,10 @@ let gameLoop = () => {
 let update = () => {
     pacman.moveProcess();
     pacman.eat();
+
+    for(let i = 0; i < ghosts.length; i++) {
+        ghosts[i].moveProcess();
+    }
 }
 
 let drawFoods = () => {

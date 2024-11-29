@@ -125,7 +125,6 @@ class Ghost {
             return
         }
 
-
         this.moveForwards();
 
         if(this.checkCollision()) {
@@ -151,15 +150,16 @@ class Ghost {
 
         while(queue.length > 0) {
             let poped = queue.shift();
-            if(poped.x == destX && poped.y == destY) {
-                return poped.moves[0];
-            } else {
-                mp[poped.y][poped.x] = 1;
-                let neighbourList = this.addNeighbours(poped, mp);
-                for(let i = 0; i < neighbourList.length; i++) {
-                    queue.push(neighbourList[i]);
+            if(poped.x == destX && 
+                poped.y == destY) { 
+                    return poped.moves[0];
+                } else {
+                    mp[poped.y][poped.x] = 1;
+                    let neighbourList = this.addNeighbours(poped, mp);
+                    for(let i = 0; i < neighbourList.length; i++) {
+                        queue.push(neighbourList[i]);
+                    }
                 }
-            }
         }
 
         return DIRECTION_UP; // default direction
@@ -173,7 +173,7 @@ class Ghost {
 
         if(
             poped.x - 1 >= 0 &&
-            poped.y - 1 < numOfRows &&
+            poped.x - 1 < numOfRows &&
             mp[poped.y][poped.x - 1] != 1
         ) {
             let tempMoves = poped.moves.slice()
@@ -182,7 +182,7 @@ class Ghost {
         }
 
         if(
-            poped.x + 1 >= 0 &&
+            poped.y + 1 >= 0 &&
             poped.y + 1 < numOfRows && 
             mp[poped.y][poped.x + 1] != 1
         ) {
@@ -192,23 +192,23 @@ class Ghost {
         }
 
         if(
-            poped.x - 1 >= 0 &&
+            poped.y - 1 >= 0 &&
             poped.y - 1 < numOfRows &&
             mp[poped.y - 1][poped.x] != 1
         ) {
             let tempMoves = poped.moves.slice()
             tempMoves.push(DIRECTION_UP)
-            queue.push({x: poped.x, y: poped.y + 1, moves: tempMoves})
+            queue.push({x: poped.x, y: poped.y - 1, moves: tempMoves})
         }
 
         if(
-            poped.x + 1 >= 0 &&
+            poped.y + 1 >= 0 &&
             poped.y + 1 < numOfRows &&
             mp[poped.y + 1][poped.x] != 1
         ) {
             let tempMoves = poped.moves.slice()
             tempMoves.push(DIRECTION_BOTTOM)
-            queue.push({x: poped.x, y: poped.y - 1, moves: tempMoves})
+            queue.push({x: poped.x, y: poped.y + 1, moves: tempMoves})
         }
 
         return queue;
