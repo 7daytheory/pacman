@@ -19,6 +19,7 @@ let foodColor = "#FFF";
 let score = 0;
 let ghosts = [];
 let ghostCount = 4;
+let lives = 3;
 
 //Pacman Direction vars
 const DIRECTION_RIGHT = 4;
@@ -109,6 +110,20 @@ let drawLives = () => {
     canvasContext.font = "20px Arial";
     canvasContext.fillStyle = "YELLOW";
     canvasContext.fillText("Lives: ", 260, oneBlockSize * (map.length + 1) + 10)
+
+    for(let i = 0;i < lives;i++) {
+        canvasContext.drawImage(
+            pacmanFrames,
+            2 * oneBlockSize,
+            0,
+            oneBlockSize,
+            oneBlockSize,
+            320 + i * oneBlockSize,
+            oneBlockSize * map.length + 10,
+            oneBlockSize,
+            oneBlockSize
+        )
+    }
 }
 
 let drawFoods = () => {
