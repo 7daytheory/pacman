@@ -97,6 +97,7 @@ class Pacman {
     checkGhostCollision() {
         for(let i = 0; i < ghosts.length; i++) {
             let ghost = ghosts[i];
+            //check if ghost and pacman(this) x and y are the same
             if(ghost.getMapX() == this.getMapX() && ghost.getMapY() == this.getMapY()) {
                 return true;
             }
