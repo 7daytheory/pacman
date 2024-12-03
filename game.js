@@ -75,8 +75,8 @@ let randomTargetForGhosts = [
 ]
 
 let gameLoop = () => {
-    update();
     draw();
+    update();
 }
 
 let update = () => {
@@ -103,13 +103,20 @@ let restartGame = () => {
 }
 
 let gameOver = () => {
+    drawGameOver();
     clearInterval(gameInterval);
+}
+
+let drawGameOver = () => {
+    canvasContext.font = "40px Arial";
+    canvasContext.fillStyle = "red";
+    canvasContext.fillText("Game Over!", 110, 250);
 }
 
 let drawLives = () => {
     canvasContext.font = "20px Arial";
-    canvasContext.fillStyle = "YELLOW";
-    canvasContext.fillText("Lives: ", 260, oneBlockSize * (map.length + 1) + 10)
+    canvasContext.fillStyle = "yellow";
+    canvasContext.fillText("Lives: ", 260, oneBlockSize * (map.length + 1) + 8)
 
     for(let i = 0;i < lives;i++) {
         canvasContext.drawImage(
