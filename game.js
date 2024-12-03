@@ -109,6 +109,10 @@ let restartGame = () => {
     if(lives == 0) {
         gameOver();
     }
+
+    if(score >= foodCount) {
+        drawWin();
+    }
 }
 
 let gameOver = () => {
@@ -120,6 +124,12 @@ let drawGameOver = () => {
     canvasContext.font = "40px Arial";
     canvasContext.fillStyle = "red";
     canvasContext.fillText("Game Over!", 110, 250);
+}
+
+let drawWin = () => {
+    canvasContext.font = "40px Arial";
+    canvasContext.fillStyle = "green";
+    canvasContext.fillText("You Win!", 110, 250);
 }
 
 let drawLives = () => {
