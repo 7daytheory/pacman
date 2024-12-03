@@ -20,6 +20,7 @@ let score = 0;
 let ghosts = [];
 let ghostCount = 4;
 let lives = 3;
+let foodCount = 0;
 
 //Pacman Direction vars
 const DIRECTION_RIGHT = 4;
@@ -62,6 +63,14 @@ let map = [
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
+
+for(let i = 0; i < map.length; i++) {
+    for (let j = 0; j < map[0].length; j++) {
+        if(map[i][j] == 2) {
+            foodCount++;
+        }
+    }
+}
 
 //Random Ghost Targets
 let randomTargetForGhosts = [
