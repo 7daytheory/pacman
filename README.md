@@ -3,10 +3,3 @@
 
 <h2>Overview</h2>
 <p>This Pac-Man game project is an interactive JavaScript-based recreation of the iconic arcade game. The game area includes walls and pathways rendered dynamically based on a 2D map array, with Pac-Man navigating through the maze to eat pellets while avoiding ghosts.</p>
-
-<h2>>Features</h2>
-<p>Add later</p>
-
-<h2>Technologies Used</h2>
-<p>Add later</p>
-
